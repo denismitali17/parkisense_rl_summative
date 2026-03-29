@@ -42,9 +42,7 @@ from stable_baselines3.common.evaluation import evaluate_policy
 
 from environment.custom_env import ParkiSenseEnv
 
-# -----------------------------------------------------------------------
 # 10 Hyperparameter Configurations
-# -----------------------------------------------------------------------
 DQN_EXPERIMENTS = [
     # Run 1 — baseline
     dict(learning_rate=1e-3, buffer_size=50000, batch_size=64,  gamma=0.99,

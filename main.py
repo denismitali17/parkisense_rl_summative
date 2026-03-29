@@ -41,9 +41,7 @@ MODELS_DIR = Path(__file__).resolve().parent / "models"
 LABEL_NAMES = ["Low Risk", "Medium Risk", "High Risk"]
 
 
-# -----------------------------------------------------------------------
 # Load helpers
-# -----------------------------------------------------------------------
 
 def best_run_from_csv(csv_path: Path):
     """Return run index of highest mean_reward in a results CSV."""
@@ -103,9 +101,7 @@ def get_action(model, model_type: str, obs: np.ndarray) -> int:
         return probs.argmax().item()
 
 
-# -----------------------------------------------------------------------
 # Episode runner
-# -----------------------------------------------------------------------
 
 def run_episode(env, model, model_type, ep_num, verbose=True):
     obs, info = env.reset()
@@ -148,9 +144,7 @@ def run_episode(env, model, model_type, ep_num, verbose=True):
     return total_reward, steps, outcome
 
 
-# -----------------------------------------------------------------------
 # Main
-# -----------------------------------------------------------------------
 
 def main():
     parser = argparse.ArgumentParser(description="ParkiSense — Run best agent")

@@ -30,7 +30,7 @@ except ImportError:
     PYGAME_AVAILABLE = False
 
 
-# ---------- Colour palette ----------
+# Colour palette 
 BG_DARK      = (15,  20,  35)
 BG_PANEL     = (25,  33,  55)
 BG_PANEL2    = (20,  28,  48)
@@ -92,9 +92,7 @@ class ParkiSenseRenderer:
         self.font_small  = pygame.font.SysFont("dejavusans", 10)
         self.font_big    = pygame.font.SysFont("dejavusans", 28, bold=True)
 
-    # ------------------------------------------------------------------
     # Public API
-    # ------------------------------------------------------------------
 
     def draw(self, data: dict):
         """Render one frame from environment data dict."""
@@ -131,9 +129,7 @@ class ParkiSenseRenderer:
     def close(self):
         pygame.quit()
 
-    # ------------------------------------------------------------------
     # Drawing helpers
-    # ------------------------------------------------------------------
 
     def _draw_title(self, data):
         # Title bar
@@ -254,7 +250,7 @@ class ParkiSenseRenderer:
                 (px + 12, py + 38),
             )
 
-        # If terminated — show final result
+        # If terminated, show final result
         if data["terminated"]:
             t_surf = self.font_header.render("EPISODE COMPLETE", True, ACCENT_ORANGE)
             self.screen.blit(t_surf, (px + 12, py + 130))
@@ -308,9 +304,7 @@ class ParkiSenseRenderer:
             (W - 185, by + 12),
         )
 
-    # ------------------------------------------------------------------
     # Utilities
-    # ------------------------------------------------------------------
 
     def _panel(self, x, y, w, h, title):
         pygame.draw.rect(self.screen, BG_PANEL, (x, y, w, h), border_radius=6)

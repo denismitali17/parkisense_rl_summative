@@ -48,9 +48,7 @@ RESULTS_DIR = Path(__file__).resolve().parents[1] / "models" / "pg"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
 
-# -----------------------------------------------------------------------
 # PPO — 10 Hyperparameter Configurations
-# -----------------------------------------------------------------------
 PPO_EXPERIMENTS = [
     # Run 1 — baseline
     dict(learning_rate=3e-4, n_steps=2048, batch_size=64,  gamma=0.99,
@@ -85,9 +83,7 @@ PPO_EXPERIMENTS = [
 ]
 
 
-# -----------------------------------------------------------------------
 # REINFORCE — 10 Hyperparameter Configurations
-# -----------------------------------------------------------------------
 REINFORCE_EXPERIMENTS = [
     # Run 1 — baseline
     dict(learning_rate=1e-3, gamma=0.99, entropy_coef=0.0, hidden_size=64,  episodes_per_update=5),
@@ -112,9 +108,7 @@ REINFORCE_EXPERIMENTS = [
 ]
 
 
-# -----------------------------------------------------------------------
 # Minimal REINFORCE Policy Network
-# -----------------------------------------------------------------------
 
 class PolicyNet(nn.Module):
     def __init__(self, obs_dim, act_dim, hidden_size):
@@ -254,9 +248,7 @@ def reinforce_train(run_idx: int, config: dict, total_episodes: int):
     }, reward_history
 
 
-# -----------------------------------------------------------------------
 # PPO Training
-# -----------------------------------------------------------------------
 
 def train_ppo(run_idx: int, config: dict, total_timesteps: int):
     print(f"\n{'='*60}")
@@ -327,9 +319,7 @@ def train_ppo(run_idx: int, config: dict, total_timesteps: int):
     }, reward_history
 
 
-# -----------------------------------------------------------------------
 # Plotting & CSV
-# -----------------------------------------------------------------------
 
 def plot_reward_curves(all_rewards: list, run_labels: list, algo: str):
     n = len(all_rewards)
@@ -367,9 +357,7 @@ def save_csv(results: list, algo: str):
     print(f"[CSV saved] {out}")
 
 
-# -----------------------------------------------------------------------
 # Main
-# -----------------------------------------------------------------------
 
 def main():
     parser = argparse.ArgumentParser()

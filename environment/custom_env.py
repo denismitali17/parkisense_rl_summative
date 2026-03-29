@@ -97,10 +97,10 @@ class ParkiSenseEnv(gym.Env):
         self.max_steps = max_steps
         self.render_mode = render_mode
 
-        # --- Action Space ---
+        # Action Space
         self.action_space = spaces.Discrete(9)
 
-        # --- Observation Space ---
+        # Observation Space
         # All features normalised to [0, 1]
         low = np.zeros(12, dtype=np.float32)
         high = np.ones(12, dtype=np.float32)
@@ -110,7 +110,7 @@ class ParkiSenseEnv(gym.Env):
         self._state = None
         self._step_count = 0
         self._num_recordings = 0
-        self._features_done = set()   # which analysis modules have been run
+        self._features_done = set()   
         self._noise_filtered = False
         self._true_severity = 0.0
         self._episode_reward = 0.0
@@ -118,12 +118,10 @@ class ParkiSenseEnv(gym.Env):
         self._last_reward = 0.0
         self._terminated = False
 
-        # Renderer (lazy init)
+        # Renderer 
         self._renderer = None
 
-    # ------------------------------------------------------------------
     # Gym Interface
-    # ------------------------------------------------------------------
 
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
@@ -157,7 +155,7 @@ class ParkiSenseEnv(gym.Env):
         terminated = False
         truncated = False
 
-        # --- Execute Action ---
+        # Execute Action
         if action == 0:  # request_recording
             self._num_recordings += 1
             reward += self._handle_recording()
@@ -209,9 +207,7 @@ class ParkiSenseEnv(gym.Env):
             self._renderer.close()
             self._renderer = None
 
-    # ------------------------------------------------------------------
     # Internal helpers
-    # ------------------------------------------------------------------
 
     def _handle_recording(self):
         """Reward for requesting a recording. First few are valuable; more = diminishing."""
@@ -310,7 +306,7 @@ class ParkiSenseEnv(gym.Env):
             float(min(self._num_recordings / 5.0, 1.0)),
             float(len(self._features_done) / 4.0),
             float(self._noise_filtered),
-            float(s),  # NOTE: true_severity visible to agent — intentional for easier baseline
+            float(s),  # NOTE: true_severity visible to agent, intentional for easier baseline
         ], dtype=np.float32)
 
         return obs
