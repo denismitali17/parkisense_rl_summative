@@ -1,0 +1,8 @@
+{
+  "algorithm": "dqn",
+  "run": 7,
+  "episodes": 5,
+  "mean_reward": 31.3,
+  "std_reward": 3.894,
+  "mean_steps": 7.8
+}

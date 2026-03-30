@@ -60,7 +60,7 @@ def best_run_from_csv(csv_path: Path):
 def load_sb3_model(algo: str, run: int):
     from stable_baselines3 import DQN, PPO
     cls = DQN if algo == "dqn" else PPO
-    path = MODELS_DIR / algo / f"{algo}_run{run}"
+    path = MODELS_DIR / algo / f"{algo}_run{run}.zip"
     model = cls.load(str(path))
     print(f"[Loaded] SB3 {algo.upper()} run {run} from {path}")
     return model, "sb3"
