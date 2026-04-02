@@ -2,7 +2,7 @@
 
 ##  Project Overview
 
-**ParkiSense** is a machine learning-based application designed to screen for Parkinson's disease and estimate symptom severity from voice recordings. This repository implements a **reinforcement learning (RL) agent** that learns to optimize the diagnostic screening pipeline — deciding when to collect additional recordings, apply signal processing, extract features, and issue a classification — to maximize diagnostic accuracy while minimizing patient burden.
+**ParkiSense** is a machine learning-based application designed to screen for Parkinson's disease and estimate symptom severity from voice recordings. This repository implements a **reinforcement learning (RL) agent** that learns to optimize the diagnostic screening pipeline, deciding when to collect additional recordings, apply signal processing, extract features, and issue a classification, to maximize diagnostic accuracy while minimizing patient burden.
 
 ### The Problem
 Early detection of Parkinson's disease (PD) is critical for intervention. However, diagnosing PD from voice biomarkers requires careful feature extraction and analysis. A naive screening system might over-test patients or miss cases. This project asks: **Can an RL agent learn to screen efficiently?**
@@ -15,17 +15,17 @@ Train three different RL algorithms (DQN, PPO, REINFORCE) to optimize the diagno
 
 This project demonstrates:
 
-1. **Environment Validity & Complexity** — Custom Gymnasium environment with realistic state space, action space, and reward structure reflecting a medical screening use case
-2. **Hyperparameter Experiments** — 10 runs each for DQN, PPO, and REINFORCE with comprehensive hyperparameter tuning and performance analysis
-3. **System Implementation & Behavior** — Agents that learn meaningful diagnostic strategies and can be integrated into production pipelines
-4. **Visualizations & Analysis** — Reward curves, convergence plots, entropy analysis, and generalization tests
-5. **Video Demonstration** — Agent behavior recorded with full-screen GUI and verbose terminal output
+1. **Environment Validity & Complexity**: Custom Gymnasium environment with realistic state space, action space, and reward structure reflecting a medical screening use case
+2. **Hyperparameter Experiments**: 10 runs each for DQN, PPO, and REINFORCE with comprehensive hyperparameter tuning and performance analysis
+3. **System Implementation & Behavior**: Agents that learn meaningful diagnostic strategies and can be integrated into production pipelines
+4. **Visualizations & Analysis**: Reward curves, convergence plots, entropy analysis, and generalization tests
+5. **Video Demonstration**: Agent behavior recorded with full-screen GUI and verbose terminal output
 
 
 ## Project Structure
 
 ```
-pablo_rl_summative/
+parkisense_rl_summative/
 ├── environment/
 │   ├── custom_env.py            # Custom Gymnasium environment implementation
 │   ├── rendering.py             # pygame 2D visualization dashboard
@@ -66,27 +66,27 @@ pablo_rl_summative/
 
 ### Observation Space (12 dimensions)
 Voice biomarker measurements from a patient recording session:
-- **Jitter** — variance in pitch (parkinsonian indicator)
-- **Shimmer** — variance in amplitude
-- **HNR** — harmonics-to-noise ratio
-- **MDVP measures** — voice quality metrics
-- **Tremor score** — motor tremor
-- **Audio quality** — signal-to-noise ratio
-- **Recording count** — number of recordings collected
-- **Filter status** — noise filter applied?
-- **Severity label** — ground truth (0=Low, 1=Medium, 2=High)
+- **Jitter**: variance in pitch (parkinsonian indicator)
+- **Shimmer**: variance in amplitude
+- **HNR**: harmonics-to-noise ratio
+- **MDVP measures**: voice quality metrics
+- **Tremor score**: motor tremor
+- **Audio quality**: signal-to-noise ratio
+- **Recording count**: number of recordings collected
+- **Filter status**: noise filter applied?
+- **Severity label**: ground truth (0=Low, 1=Medium, 2=High)
 
 ### Action Space (9 discrete actions)
-1. **Request Recording** — collect another voice sample
-2. **Apply Noise Filter** — preprocess audio
-3. **Extract Jitter Features** — analyze pitch variance
-4. **Extract Shimmer Features** — analyze amplitude variance
-5. **Extract HNR Features** — analyze harmonics
-6. **Extract MDVP Features** — analyze voice quality
-7. **Tremor Analysis** — measure motor component
-8. **Classify: Low Risk** — issue diagnosis
-9. **Classify: Medium Risk** — issue diagnosis
-10. **Classify: High Risk** — issue diagnosis
+1. **Request Recording**: collect another voice sample
+2. **Apply Noise Filter**: preprocess audio
+3. **Extract Jitter Features**: analyze pitch variance
+4. **Extract Shimmer Features**: analyze amplitude variance
+5. **Extract HNR Features**: analyze harmonics
+6. **Extract MDVP Features**: analyze voice quality
+7. **Tremor Analysis**: measure motor component
+8. **Classify: Low Risk**: issue diagnosis
+9. **Classify: Medium Risk**: issue diagnosis
+10. **Classify: High Risk**: issue diagnosis
 
 ### Reward Structure
 - **+25**: Correct high-risk classification
@@ -115,11 +115,11 @@ pip install -r requirements.txt
 ```
 
 This installs:
-- `gymnasium` — RL environment framework
-- `stable-baselines3` — DQN, PPO implementation
-- `torch` — PyTorch backend
-- `pygame` — 2D visualization
-- `matplotlib` — plotting
+- `gymnasium`: RL environment framework
+- `stable-baselines3`: DQN, PPO implementation
+- `torch`: PyTorch backend
+- `pygame`: 2D visualization
+- `matplotlib`: plotting
 
 
 ## 1. Running the Project
@@ -220,13 +220,13 @@ The learned policy exhibits near-optimal behavior:
 
 All plots saved in `plots/`:
 
-1. **combined_reward_curves.png** — Bar charts of all 30 runs with error bars
-2. **dqn_objective_curve.png** — TD loss decay over training
-3. **pg_entropy_curves.png** — Policy entropy for PPO and REINFORCE
-4. **convergence_plot.png** — Mean reward trajectory for all algorithms
-5. **generalization_test.png** — 100 unseen episodes performance by severity
-6. **agent_architecture.png** — System diagram (policy network → environment → reward)
-7. **dqn_reward_curves.png**, **ppo_reward_curves.png**, **reinforce_reward_curves.png** — Per-run curves
+1. **combined_reward_curves.png**: Bar charts of all 30 runs with error bars
+2. **dqn_objective_curve.png**: TD loss decay over training
+3. **pg_entropy_curves.png**: Policy entropy for PPO and REINFORCE
+4. **convergence_plot.png**: Mean reward trajectory for all algorithms
+5. **generalization_test.png**: 100 unseen episodes performance by severity
+6. **agent_architecture.png**:  System diagram (policy network → environment → reward)
+7. **dqn_reward_curves.png**, **ppo_reward_curves.png**, **reinforce_reward_curves.png**: Per-run curves
 
 
 ## Integration & API Readiness
@@ -292,8 +292,8 @@ action, _states = model.predict(observation, deterministic=True)
 
 - **Gymnasium**: https://gymnasium.farama.org/
 - **Stable Baselines3**: https://stable-baselines3.readthedocs.io/
-- **DQN Paper**: Mnih et al. (2015) — "Human-level control through deep reinforcement learning"
-- **PPO Paper**: Schulman et al. (2017) — "Proximal Policy Optimization Algorithms"
+- **DQN Paper**: Mnih et al. (2015): "Human-level control through deep reinforcement learning"
+- **PPO Paper**: Schulman et al. (2017): "Proximal Policy Optimization Algorithms"
 - **Voice Biomarkers**: Standard MDVP (Multi-Dimensional Voice Program) features
 
 ## Credits
