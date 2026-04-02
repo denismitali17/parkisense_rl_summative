@@ -297,7 +297,7 @@ action, _states = model.predict(observation, deterministic=True)
 - **Voice Biomarkers**: Standard MDVP (Multi-Dimensional Voice Program) features
 
 ## Credits
-**Author:** Denis Mitali
-**Capstone Project:** ParkiSense RL  
-**Course:** Machine Learning Techniques II
-**School:** African Leadership University
+- **Author:** Denis Mitali
+- **Project:** ParkiSense RL  
+- **Course:** Machine Learning Techniques II
+- **School:** African Leadership University
